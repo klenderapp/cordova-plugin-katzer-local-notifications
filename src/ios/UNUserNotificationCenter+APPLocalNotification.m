@@ -38,17 +38,11 @@ NSString * const kAPPGeneralCategory = @"GENERAL";
  */
 - (void) registerGeneralNotificationCategory
 {
-    UNNotificationAction *snoozeAction10 = [UNNotificationAction
-                                          actionWithIdentifier:@"SNOOZE_ACTION_10" title:@"Snooze 10m" options:@[]];
-    UNNotificationAction *snoozeAction1h = [UNNotificationAction
-                                          actionWithIdentifier:@"SNOOZE_ACTION_1h" title:@"Snooze 1h" options:@[]];
-    UNNotificationAction *snoozeAction1d = [UNNotificationAction
-                                          actionWithIdentifier:@"SNOOZE_ACTION_1d" title:@"Snooze 1d" options:@[]];
     UNNotificationCategory* category;
 
     category = [UNNotificationCategory
                 categoryWithIdentifier:kAPPGeneralCategory
-                actions:@[snoozeAction10, snoozeAction1h, snoozeAction1d]
+                actions:@[]
                 intentIdentifiers:@[]
                 options:UNNotificationCategoryOptionCustomDismissAction];
 
@@ -249,7 +243,10 @@ NSString * const kAPPGeneralCategory = @"GENERAL";
 
     for (UNNotificationRequest* notification in notifications)
     {
-        [ids addObject:notification.options.id];
+        NSString* fid = [NSString stringWithFormat:@"%@", notification.options.id];
+        if (![fid isEqualToString: @"111111"]) {
+            [ids addObject:notification.options.id];
+        }
     }
 
     return ids;
@@ -324,7 +321,10 @@ NSString * const kAPPGeneralCategory = @"GENERAL";
 
     for (UNNotificationRequest* notification in notifications)
     {
-        [options addObject:notification.options.userInfo];
+        NSString* fid = [NSString stringWithFormat:@"%@", notification.options.id];
+        if (![fid isEqualToString: @"111111"]) {
+            [options addObject:notification.options.userInfo];
+        }
     }
 
     return options;

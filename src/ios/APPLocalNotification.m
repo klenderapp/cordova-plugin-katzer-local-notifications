@@ -114,9 +114,12 @@ UNNotificationPresentationOptions const OptionAlert = UNNotificationPresentation
                 [_center cancelNotification:oldNotification];
             }
 
+            NSMutableDictionary *mutableDict = [NSMutableDictionary dictionaryWithDictionary:options];
+            [mutableDict setObject:@"snooze-options" forKey:@"actions"];
+
             // Schedule the new notification
             notification = [[APPNotificationContent alloc]
-                            initWithOptions:options];
+                            initWithOptions:mutableDict];
 
             [self scheduleNotification:notification];
         }
@@ -557,7 +560,7 @@ UNNotificationPresentationOptions const OptionAlert = UNNotificationPresentation
 
         NSDate *currentDate = [NSDate date];
         NSMutableDictionary *notificationDict = [NSMutableDictionary dictionaryWithDictionary: @{
-            @"actions": @[],
+            @"actions": @"snooze-options",
             @"alarmVolume": oldNotification.content.userInfo[@"alarmVolume"],
             @"attachments": oldNotification.content.userInfo[@"attachments"],
             @"autoClear": oldNotification.content.userInfo[@"autoClear"],
