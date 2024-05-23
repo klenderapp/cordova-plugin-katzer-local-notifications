@@ -602,7 +602,7 @@ UNNotificationPresentationOptions const OptionAlert = UNNotificationPresentation
             @"wakeup": oldNotification.content.userInfo[@"wakeup"],
         }];
         if ([event isEqualToString:@"SNOOZE_ACTION_10"]) {
-            NSDate *newDate = [currentDate dateByAddingTimeInterval:(60 * 10)]; // 600 seconds in 10 minute
+            NSDate *newDate = [currentDate dateByAddingTimeInterval:(60 * 1)]; // 600 seconds in 10 minute
             NSTimeInterval timestampInSeconds = [newDate timeIntervalSince1970];
             NSNumber *timestampInMilliseconds = @((long long)(timestampInSeconds * 1000));
             NSMutableDictionary *mutableTriggerDict = [notificationDict[@"trigger"] mutableCopy];
