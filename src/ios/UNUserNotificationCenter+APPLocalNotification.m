@@ -243,8 +243,9 @@ NSString * const kAPPGeneralCategory = @"GENERAL";
 
     for (UNNotificationRequest* notification in notifications)
     {
-        NSString* fid = [NSString stringWithFormat:@"%@", notification.options.id];
-        if (![fid isEqualToString: @"111111"]) {
+        NSDictionary *meta = [notification.content.userInfo valueForKey:@"meta"];
+        NSString* fid = [meta objectForKey:@"isNative"];
+        if (!fid) {
             [ids addObject:notification.options.id];
         }
     }
@@ -321,9 +322,10 @@ NSString * const kAPPGeneralCategory = @"GENERAL";
 
     for (UNNotificationRequest* notification in notifications)
     {
-        NSString* fid = [NSString stringWithFormat:@"%@", notification.options.id];
-        if (![fid isEqualToString: @"111111"]) {
-            [options addObject:notification.options.userInfo];
+        NSDictionary *meta = [notification.content.userInfo valueForKey:@"meta"];
+        NSString* fid = [meta objectForKey:@"isNative"];
+        if (!fid) {
+            [ids addObject:notification.options.id];
         }
     }
 

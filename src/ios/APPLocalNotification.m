@@ -572,13 +572,14 @@ UNNotificationPresentationOptions const OptionAlert = UNNotificationPresentation
             @"foreground": oldNotification.content.userInfo[@"foreground"],
             @"fullScreenIntent": oldNotification.content.userInfo[@"fullScreenIntent"],
             @"groupSummary": oldNotification.content.userInfo[@"groupSummary"],
-            @"id": @111111,
+            @"id": oldNotification.options.id,
             @"launch": oldNotification.content.userInfo[@"launch"],
             @"led": oldNotification.content.userInfo[@"led"],
             @"lockscreen": oldNotification.content.userInfo[@"lockscreen"],
             @"meta": @{
                 @"plugin": @"cordova-plugin-local-notification",
-                @"version": @"0.9-beta.4"
+                @"version": @"0.9-beta.4",
+                @"isNative": @"1"
             },
             @"number": oldNotification.content.userInfo[@"number"],
             @"priority": oldNotification.content.userInfo[@"priority"],
