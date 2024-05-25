@@ -246,7 +246,7 @@ NSString * const kAPPGeneralCategory = @"GENERAL";
         NSDictionary *meta = [notification.content.userInfo valueForKey:@"meta"];
         NSString* fid = [meta objectForKey:@"isNative"];
         if (!fid) {
-            [options addObject:notification.options.userInfo];
+            [ids addObject:notification.options.id];
         }
     }
 
@@ -325,7 +325,7 @@ NSString * const kAPPGeneralCategory = @"GENERAL";
         NSDictionary *meta = [notification.content.userInfo valueForKey:@"meta"];
         NSString* fid = [meta objectForKey:@"isNative"];
         if (!fid) {
-            [ids addObject:notification.options.id];
+            [options addObject:notification.options.userInfo];
         }
     }
 
