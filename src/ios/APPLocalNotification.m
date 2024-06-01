@@ -559,6 +559,7 @@ UNNotificationPresentationOptions const OptionAlert = UNNotificationPresentation
         UNNotificationRequest* oldNotification = response.notification.request;
 
         NSDate *currentDate = [NSDate date];
+        NSNumber *updatedId = @([oldNotification.options.id integerValue] + 111110);
         NSMutableDictionary *notificationDict = [NSMutableDictionary dictionaryWithDictionary: @{
             @"actions": @"snooze-options",
             @"alarmVolume": oldNotification.content.userInfo[@"alarmVolume"],
@@ -572,7 +573,7 @@ UNNotificationPresentationOptions const OptionAlert = UNNotificationPresentation
             @"foreground": oldNotification.content.userInfo[@"foreground"],
             @"fullScreenIntent": oldNotification.content.userInfo[@"fullScreenIntent"],
             @"groupSummary": oldNotification.content.userInfo[@"groupSummary"],
-            @"id": oldNotification.options.id,
+            @"id": updatedId,
             @"launch": oldNotification.content.userInfo[@"launch"],
             @"led": oldNotification.content.userInfo[@"led"],
             @"lockscreen": oldNotification.content.userInfo[@"lockscreen"],
